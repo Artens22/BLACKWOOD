@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BLACKWOOD — Панель управления</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+</head>
+
+<body>
+
+    <header class="admin-header">
+        <div class="logo">BLACKWOOD<span>.</span></div>
+        <div class="admin-label">ПАНЕЛЬ УПРАВЛЕНИЯ</div>
+        <a href="/" class="back-link">На сайт ↗</a>
+    </header>
+
+    <main class="admin-container">
+
+        <section class="welcome">
+            <p class="eyebrow">BLACKWOOD MANAGEMENT</p>
+            <h1>Панель управления</h1>
+            <p>Управляй записями своего барбершопа.</p>
+        </section>
+
+        <section class="stats">
+            <div class="stat-card">
+                <span>ВСЕГО ЗАПИСЕЙ</span>
+                <h2>{{ total_appointments }}</h2>
+            </div>
+
+            <div class="stat-card">
+                <span>НОВЫЕ ЗАПИСИ</span>
+                <h2>{{ new_appointments }}</h2>
+            </div>
+
+            <div class="stat-card">
+                <span>ВЫПОЛНЕНО</span>
+                <h2>{{ completed_appointments }}</h2>
+            </div>
+        </section>
+
+        <section class="appointments">
+            <div class="section-heading">
+                <h2>Записи клиентов</h2>
+                <span>BOOKING MANAGEMENT</span>
+            </div>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>КЛИЕНТ</th>
+                            <th>ТЕЛЕФОН</th>
+                            <th>УСЛУГА</th>
+                            <th>ДАТА</th>
+                            <th>ВРЕМЯ</th>
+                            <th>СТАТУС</th>
+                            <th>ДЕЙСТВИЯ</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                    <tbody>
+                        {% for appointment in appointments %}
+                        <tr>
+                            <td>{{ appointment.name }}</td>
+                            <td>{{ appointment.phone }}</td>
+                            <td>{{ appointment.service }}</td>
+                            <td>{{ appointment.appointment_date }}</td>
+                            <td>{{ appointment.appointment_time }}</td>
+                            <td>
+                                {% if appointment.status == "new" %}
+                                <span class="status-badge status-new">
+                                    Новая
+                                </span>
+
+                                <form method="POST"
+                                    action="{{ url_for('complete_appointment', appointment_id=appointment.id) }}">
+                                    <button type="submit" class="complete-btn">
+                                        Выполнено
+                                    </button>
+                                </form>
+
+                                {% elif appointment.status == "completed" %}
+                                <span class="status-badge status-completed">
+                                    Выполнена
+                                </span>
+                                {% endif %}
+                            </td>
+                            < <td>
+                                <form method="POST"
+                                    action="{{ url_for('delete_appointment', appointment_id=appointment.id) }}"
+                                    onsubmit="return confirm('Удалить эту запись?');">
+
+                                    <button type="submit" class="delete-btn">
+                                        Удалить
+                                    </button>
+
+                                </form>
+                                </td>
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <td colspan="5" class="empty">
+                                Пока нет записей
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+
+
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+</body>
+
+</html>

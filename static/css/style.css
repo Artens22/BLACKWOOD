@@ -1,0 +1,416 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #0b0b0b;
+    color: #f5f1e8;
+    font-family: Arial, sans-serif;
+}
+
+/* Шапка */
+header {
+    height: 90px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 7%;
+    background: #0b0b0b;
+    border-bottom: 1px solid #292929;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+    letter-spacing: 6px;
+    color: #c9a96e;
+}
+
+nav a {
+    color: #f5f1e8;
+    text-decoration: none;
+    margin-left: 40px;
+    font-size: 13px;
+    letter-spacing: 2px;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #c9a96e;
+}
+
+/* Главный экран */
+.hero {
+    min-height: 85vh;
+
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
+        url("/static/images/barbershop.png");
+
+    background-size: cover;
+    background-position: center;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.hero h1 {
+    font-size: clamp(40px, 7vw, 90px);
+    letter-spacing: 10px;
+    margin-bottom: 25px;
+}
+
+.hero p {
+    font-size: 15px;
+    letter-spacing: 5px;
+    margin-bottom: 40px;
+    color: #d0c5b0;
+}
+
+/* Кнопка */
+.button {
+    background: #c9a96e;
+    color: #111;
+    padding: 20px 40px;
+    text-decoration: none;
+    letter-spacing: 3px;
+    font-size: 13px;
+    transition: 0.3s;
+}
+
+.button:hover {
+    background: #e1c48d;
+    transform: translateY(-3px);
+}
+
+/* Подвал */
+footer {
+    text-align: center;
+    padding: 30px;
+    color: #888;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+/* Телефоны */
+@media (max-width: 600px) {
+    header {
+        padding: 0 20px;
+        height: 75px;
+    }
+
+    .logo {
+        font-size: 20px;
+        letter-spacing: 3px;
+    }
+
+    nav a {
+        margin-left: 12px;
+        font-size: 10px;
+    }
+
+    .hero h1 {
+        letter-spacing: 4px;
+    }
+
+    .hero p {
+        font-size: 12px;
+        letter-spacing: 2px;
+    }
+}
+
+
+/* ===== SERVICES SECTION ===== */
+
+.services {
+    background-color: #111111;
+    color: #f5f0e8;
+    padding: 100px 7%;
+}
+
+.services-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.services-heading {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.services-subtitle {
+    color: #c9a96e;
+    font-size: 12px;
+    letter-spacing: 5px;
+    margin-bottom: 20px;
+}
+
+.services-heading h2 {
+    font-size: 42px;
+    letter-spacing: 4px;
+    margin-bottom: 20px;
+}
+
+.services-description {
+    color: #999999;
+    font-size: 15px;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.service-card {
+    border: 1px solid #333333;
+    padding: 40px 30px;
+    min-height: 260px;
+    transition: 0.3s ease;
+}
+
+.service-card:hover {
+    border-color: #c9a96e;
+    transform: translateY(-5px);
+}
+
+.service-number {
+    color: #c9a96e;
+    font-size: 13px;
+    letter-spacing: 2px;
+}
+
+.service-card h3 {
+    font-size: 22px;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+.service-card p {
+    color: #999999;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.service-price {
+    color: #c9a96e;
+    font-size: 24px;
+    margin-top: 30px;
+    font-weight: bold;
+}
+
+.service-price span {
+    font-size: 14px;
+    font-weight: normal;
+}
+
+/* Адаптация под телефон */
+
+@media (max-width: 768px) {
+    .services {
+        padding: 70px 20px;
+    }
+
+    .services-heading h2 {
+        font-size: 30px;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .service-card {
+        min-height: auto;
+        padding: 30px;
+    }
+}
+
+/* ===== BOOKING SECTION ===== */
+
+.booking {
+    padding: 100px 20px;
+    background: #111111;
+    border-top: 1px solid #292929;
+}
+
+.booking-container {
+    max-width: 650px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.booking-subtitle {
+    color: #c9b27c;
+    font-size: 11px;
+    letter-spacing: 4px;
+    margin-bottom: 20px;
+}
+
+.booking h2 {
+    font-size: 38px;
+    color: #ffffff;
+    margin-bottom: 15px;
+}
+
+.booking-description {
+    color: #999999;
+    margin-bottom: 40px;
+}
+
+.booking-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.booking-form input[type="text"],
+.booking-form input[type="tel"],
+.booking-form select {
+    width: 100%;
+    padding: 18px;
+    background: #1b1b1b;
+    border: 1px solid #333333;
+    color: white;
+    font-size: 15px;
+    outline: none;
+}
+
+.booking-form input:focus,
+.booking-form select:focus {
+    border-color: #c9b27c;
+}
+
+.booking-form select {
+    color: #cccccc;
+}
+
+.consent {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    text-align: left;
+    color: #999999;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.consent input {
+    margin-top: 3px;
+}
+
+.consent a {
+    color: #c9b27c;
+}
+
+.booking-button {
+    padding: 18px;
+    background: #c9b27c;
+    color: #111111;
+    border: none;
+    cursor: pointer;
+    letter-spacing: 2px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.booking-button:hover {
+    background: #ffffff;
+}
+
+/* Для телефонов */
+
+@media (max-width: 600px) {
+    .booking {
+        padding: 70px 20px;
+    }
+
+    .booking h2 {
+        font-size: 28px;
+    }
+}
+
+/* Кнопка мобильного меню */
+.menu-toggle {
+    display: none;
+    background: transparent;
+    color: #d6ad60;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+/* Отображение на телефонах */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .navigation {
+        display: none;
+        flex-direction: column;
+        gap: 20px;
+        background: #111;
+        padding: 20px;
+        border-radius: 8px;
+    }
+
+    .navigation.active {
+        display: flex;
+    }
+}
+
+/* Раздел О нас */
+.about {
+    padding: 100px 20px;
+    background: #111111;
+    text-align: center;
+}
+
+.about-container {
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+.about-subtitle {
+    color: #d6ad60;
+    font-size: 13px;
+    letter-spacing: 4px;
+    margin-bottom: 20px;
+}
+
+.about h2 {
+    color: #d6ad60;
+    font-size: 38px;
+    letter-spacing: 5px;
+    margin-bottom: 25px;
+}
+
+.about p:not(.about-subtitle) {
+    color: #cccccc;
+    font-size: 17px;
+    line-height: 1.8;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .about {
+        padding: 70px 20px;
+    }
+
+    .about h2 {
+        font-size: 30px;
+    }
+
+    .about p:not(.about-subtitle) {
+        font-size: 15px;
+    }
+}

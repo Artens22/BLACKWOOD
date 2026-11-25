@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BLACKWOOD — Мужская парикмахерская</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="logo">BLACKWOOD</div>
+
+        <button class="menu-toggle" id="menuToggle" aria-label="Открыть меню" aria-expanded="false">
+            ☰
+        </button>
+
+        <nav class="navigation" id="navigation">
+            <a href="#home">Главная</a>
+            <a href="#services">Услуги</a>
+            <a href="#about">О нас</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+
+            <div class="hero-content">
+                <p class="subtitle">МУЖСКОЙ СТИЛЬ • ТРАДИЦИИ • МАСТЕРСТВО</p>
+
+                <h1>ИСКУССТВО<br>МУЖСКОГО СТИЛЯ</h1>
+
+                <p class="description">
+                    Стиль. Уверенность. Мастерство.
+                </p>
+
+                <a href="#services" class="button">
+                    НАШИ УСЛУГИ
+                </a>
+            </div>
+
+        </section>
+        <section class="about" id="about">
+            <div class="about-container">
+
+                <p class="about-subtitle">BLACKWOOD BARBERSHOP</p>
+
+                <h2>О НАС</h2>
+
+                <p>
+                    BLACKWOOD — пространство мужского стиля,
+                    внимания к деталям и индивидуального подхода.
+                    Мы ценим качество, комфорт и уверенность
+                    в каждом образе.
+                </p>
+
+            </div>
+        </section>
+        <section class="services" id="services">
+            <div class="services-container">
+
+                <div class="services-heading">
+                    <p class="services-subtitle">BLACKWOOD BARBERSHOP</p>
+                    <h2>НАШИ УСЛУГИ</h2>
+                    <p class="services-description">
+                        Точность в деталях. Стиль в каждом движении.
+                    </p>
+                </div>
+
+                <div class="services-grid">
+
+                    <div class="service-card">
+                        <span class="service-number">01</span>
+                        <h3>Мужская стрижка</h3>
+                        <p>
+                            Индивидуальный подбор формы,
+                            стрижка и укладка.
+                        </p>
+                        <div class="service-price">
+                            <span>от</span> 1 500 ₽
+                        </div>
+                    </div>
+
+                    <div class="service-card">
+                        <span class="service-number">02</span>
+                        <h3>Оформление бороды</h3>
+                        <p>
+                            Коррекция формы, контуры
+                            и уход за бородой.
+                        </p>
+                        <div class="service-price">
+                            <span>от</span> 800 ₽
+                        </div>
+                    </div>
+
+                    <div class="service-card">
+                        <span class="service-number">03</span>
+                        <h3>Комплекс</h3>
+                        <p>
+                            Стрижка и оформление бороды
+                            в одном визите.
+                        </p>
+                        <div class="service-price">
+                            <span>от</span> 2 000 ₽
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+    <section class="booking" id="booking">
+        <div class="booking-container">
+
+            <p class="booking-subtitle">BLACKWOOD BARBERSHOP</p>
+
+            <h2>Запишись на свой стиль</h2>
+
+            <p class="booking-description">
+                Выбери услугу и оставь заявку на удобное время.
+            </p>
+
+            <form class="booking-form" id="booking-form">
+
+                <input type="text" name="name" placeholder="Твоё имя" required>
+
+                <input type="tel" name="phone" placeholder="Номер телефона" required>
+
+                <select name="service" required>
+                    <option value="">Выбери услугу</option>
+                    <option value="Мужская стрижка">Мужская стрижка</option>
+                    <option value="Оформление бороды">Оформление бороды</option>
+                    <option value="Комплекс">Комплекс</option>
+                </select>
+
+                <label for="appointment-date">Дата записи</label>
+                <input type="date" id="appointment-date" name="appointment_date" required>
+
+                <label for="appointment-time">Время записи</label>
+                <input type="time" id="appointment-time" name="appointment_time" required>
+
+                <button type="submit" class="booking-button">
+                    ПРОВЕРИТЬ ФОРМУ
+                </button>
+
+                <p id="demo-message" class="demo-message" role="status" aria-live="polite"></p>
+
+            </form>
+        </div>
+    </section>
+    <footer class="footer">
+        BLACKWOOD — BARBERSHOP
+    </footer>
+    <script>
+        const menuToggle = document.getElementById("menuToggle");
+        const navigation = document.getElementById("navigation");
+
+        menuToggle.addEventListener("click", function () {
+            navigation.classList.toggle("active");
+
+            const isOpen = navigation.classList.contains("active");
+
+            menuToggle.textContent = isOpen ? "✕" : "☰";
+            menuToggle.setAttribute("aria-expanded", isOpen);
+            menuToggle.setAttribute(
+                "aria-label",
+                isOpen ? "Закрыть меню" : "Открыть меню"
+            );
+        });
+    </script>
+    <script>
+        const bookingForm = document.getElementById("booking-form");
+        const demoMessage = document.getElementById("demo-message");
+
+        bookingForm.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            demoMessage.textContent =
+                "Это демонстрационная форма BLACKWOOD. Данные никуда не отправлены и не сохранены.";
+
+            bookingForm.reset();
+        });
+    </script>
+</body>
+
+</html>

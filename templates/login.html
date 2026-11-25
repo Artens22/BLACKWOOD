@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BLACKWOOD — Вход</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+</head>
+
+<body>
+
+    <header class="admin-header">
+        <div class="logo">BLACKWOOD<span>.</span></div>
+        <div class="admin-label">ADMIN ACCESS</div>
+        <a href="/" class="back-link">На сайт ↗</a>
+    </header>
+
+    <main class="login-container">
+        <div class="login-card">
+            <p class="eyebrow">BLACKWOOD MANAGEMENT</p>
+
+            <h1>Добро пожаловать</h1>
+            <p class="login-description">
+                Войдите в панель управления
+            </p>
+
+            {% if error %}
+            <p class="login-error">{{ error }}</p>
+            {% endif %}
+
+            <form method="POST" action="/login">
+                <label for="password">Пароль администратора</label>
+
+                <input type="password" id="password" name="password" placeholder="Введите пароль" required>
+
+                <button type="submit" class="login-button">
+                    ВОЙТИ В СИСТЕМУ
+                </button>
+            </form>
+        </div>
+    </main>
+
+</body>
+
+</html>
