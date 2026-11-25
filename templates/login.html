@@ -30,6 +30,8 @@
             {% endif %}
 
             <form method="POST" action="/login">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
                 <label for="password">Пароль администратора</label>
 
                 <input type="password" id="password" name="password" placeholder="Введите пароль" required>
@@ -42,5 +44,3 @@
     </main>
 
 </body>
-
-</html>
