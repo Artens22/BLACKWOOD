@@ -23,3 +23,6 @@ Features
 Project Status
 
 Educational project. Not intended for real customer bookings or production use.
+## Preview
+
+![BLACKWOOD Website](screenshots/blackwood-home.png)
