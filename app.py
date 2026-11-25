@@ -3,13 +3,23 @@ from dotenv import load_dotenv
 load_dotenv()
 import config
 import sqlite3
+import os
 
 from flask import Flask, render_template, request, redirect, url_for, session
 from werkzeug.security import check_password_hash
 from database import init_db
+from flask_wtf.csrf import CSRFProtect
 
 app = Flask(__name__)
+
 app.secret_key = config.SECRET_KEY
+app.config.update(
+    SESSION_COOKIE_HTTPONLY=True,
+    SESSION_COOKIE_SAMESITE="Lax",
+    SESSION_COOKIE_SECURE=os.environ.get("RENDER") == "true",
+)
+
+csrf = CSRFProtect(app)
 
 # Создаём базу данных при запуске сайта
 init_db()
