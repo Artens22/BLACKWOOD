@@ -79,6 +79,7 @@
 
                                 <form method="POST"
                                     action="{{ url_for('complete_appointment', appointment_id=appointment.id) }}">
+                                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
                                     <button type="submit" class="complete-btn">
                                         Выполнено
                                     </button>
@@ -94,6 +95,8 @@
                                 <form method="POST"
                                     action="{{ url_for('delete_appointment', appointment_id=appointment.id) }}"
                                     onsubmit="return confirm('Удалить эту запись?');">
+
+                                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
 
                                     <button type="submit" class="delete-btn">
                                         Удалить
